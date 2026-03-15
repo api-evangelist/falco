@@ -1,0 +1,15 @@
+name: Falco
+description: Cloud-native runtime security tool that detects unexpected application
+  behavior and alerts on threats at runtime using eBPF
+url: https://falco.org
+tags:
+- Security
+- Runtime Security
+- Cloud Native
+- eBPF
+- Threat Detection
+- CNCF
+created: '2025'
+modified: '2025'
+apis: []
+common: []
