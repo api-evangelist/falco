@@ -11,5 +11,45 @@ tags:
 - CNCF
 created: '2025'
 modified: '2025'
-apis: []
-common: []
+apis:
+- aid: falco:falco-http-api
+  name: Falco HTTP API
+  description: REST API served by the Falco web server providing health checks,
+    version information, and rules management endpoints for the Falco runtime
+    security engine.
+  tags:
+  - Security
+  - Runtime Security
+  - Health Check
+  - Rules
+  humanURL: https://falco.org/docs/
+  properties:
+  - url: openapi/falco-openapi.yml
+    type: OpenAPI
+  - url: json-schema/falco-rules.json
+    type: JSONSchema
+  - url: json-schema/falco-alert-output.json
+    type: JSONSchema
+  - url: json-ld/falco-context.jsonld
+    type: JSONLD
+common:
+- name: Falco Documentation
+  description: Official documentation for Falco runtime security
+  url: https://falco.org/docs/
+  type: Documentation
+- name: Falco GitHub Repository
+  description: Source code repository for the Falco project
+  url: https://github.com/falcosecurity/falco
+  type: GitHubRepository
+- name: Falco Rules Repository
+  description: Default rules repository maintained by the Falco community
+  url: https://github.com/falcosecurity/rules
+  type: GitHubRepository
+- name: Falco Blog
+  description: Official blog with updates and security insights
+  url: https://falco.org/blog/
+  type: Blog
+- name: Falco Community
+  description: Community resources including Slack and mailing lists
+  url: https://falco.org/community/
+  type: Community

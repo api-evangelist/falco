@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://falco.org/schemas/rules/v1/falco-rules.json",
+  "title": "Falco Rules File",
+  "description": "Schema for Falco rules YAML files that define runtime security detection rules, macros, and lists used by the Falco engine to detect unexpected behavior in cloud-native environments.",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      { "$ref": "#/$defs/Rule" },
+      { "$ref": "#/$defs/Macro" },
+      { "$ref": "#/$defs/List" },
+      { "$ref": "#/$defs/RequiredEngineVersion" },
+      { "$ref": "#/$defs/RequiredPluginVersions" }
+    ]
+  },
+  "$defs": {
+    "Rule": {
+      "type": "object",
+      "description": "A Falco detection rule that defines a condition to match against system events and an output message to emit when triggered.",
+      "properties": {
+        "rule": {
+          "type": "string",
+          "description": "Unique name of the rule"
+        },
+        "desc": {
+          "type": "string",
+          "description": "Human-readable description of what the rule detects"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Sysdig filter expression that defines when the rule fires"
+        },
+        "output": {
+          "type": "string",
+          "description": "Output message template using Sysdig field references"
+        },
+        "priority": {
+          "type": "string",
+          "description": "Severity level of the alert",
+          "enum": [
+            "EMERGENCY",
+            "ALERT",
+            "CRITICAL",
+            "ERROR",
+            "WARNING",
+            "NOTICE",
+            "INFORMATIONAL",
+            "DEBUG"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "description": "Data source the rule applies to",
+          "enum": [
+            "syscall",
+            "k8s_audit",
+            "aws_cloudtrail",
+            "okta",
+            "github"
+          ],
+          "default": "syscall"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Tags for categorization including MITRE ATT&CK technique references"
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether the rule is enabled",
+          "default": true
+        },
+        "warn_evttypes": {
+          "type": "boolean",
+          "description": "Whether to warn if the condition does not contain event type checks",
+          "default": true
+        },
+        "skip-if-unknown-filter": {
+          "type": "boolean",
+          "description": "Skip the rule if the filter uses unknown fields",
+          "default": false
+        },
+        "append": {
+          "type": "boolean",
+          "description": "If true, appends to an existing rule with the same name",
+          "default": false
+        },
+        "exceptions": {
+          "type": "array",
+          "description": "Named exceptions that define conditions under which the rule should not fire",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the exception"
+              },
+              "fields": {
+                "description": "Field or fields to match for the exception",
+                "oneOf": [
+                  { "type": "string" },
+                  {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                ]
+              },
+              "comps": {
+                "description": "Comparison operators for exception fields",
+                "oneOf": [
+                  { "type": "string" },
+                  {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                ]
+              },
+              "values": {
+                "type": "array",
+                "description": "Values to match against the exception fields"
+              }
+            },
+            "required": ["name", "fields"]
+          }
+        },
+        "output_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Explicit list of output fields to include in alert"
+        }
+      },
+      "required": ["rule", "desc", "condition", "output", "priority"],
+      "additionalProperties": false
+    },
+    "Macro": {
+      "type": "object",
+      "description": "A reusable condition snippet that can be referenced by rules and other macros.",
+      "properties": {
+        "macro": {
+          "type": "string",
+          "description": "Unique name of the macro"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Filter expression defining the macro"
+        },
+        "append": {
+          "type": "boolean",
+          "description": "If true, appends to an existing macro with the same name",
+          "default": false
+        }
+      },
+      "required": ["macro", "condition"],
+      "additionalProperties": false
+    },
+    "List": {
+      "type": "object",
+      "description": "A named collection of items that can be referenced in rule conditions and macros.",
+      "properties": {
+        "list": {
+          "type": "string",
+          "description": "Unique name of the list"
+        },
+        "items": {
+          "type": "array",
+          "description": "Items in the list",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" }
+            ]
+          }
+        },
+        "append": {
+          "type": "boolean",
+          "description": "If true, appends to an existing list with the same name",
+          "default": false
+        }
+      },
+      "required": ["list", "items"],
+      "additionalProperties": false
+    },
+    "RequiredEngineVersion": {
+      "type": "object",
+      "description": "Specifies the minimum Falco engine version required by this rules file.",
+      "properties": {
+        "required_engine_version": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "integer" }
+          ],
+          "description": "Minimum engine version required"
+        }
+      },
+      "required": ["required_engine_version"],
+      "additionalProperties": false
+    },
+    "RequiredPluginVersions": {
+      "type": "object",
+      "description": "Specifies the minimum plugin versions required by this rules file.",
+      "properties": {
+        "required_plugin_versions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Plugin name"
+              },
+              "version": {
+                "type": "string",
+                "description": "Minimum plugin version"
+              }
+            },
+            "required": ["name", "version"]
+          }
+        }
+      },
+      "required": ["required_plugin_versions"],
+      "additionalProperties": false
+    }
+  }
+}

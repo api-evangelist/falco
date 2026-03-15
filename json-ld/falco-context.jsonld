@@ -1,0 +1,141 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "falco": "https://falco.org/vocab#",
+    "schema": "https://schema.org/",
+    "sec": "https://w3id.org/security#",
+    "spdx": "https://spdx.org/rdf/terms#",
+    "stix": "https://docs.oasis-open.org/cti/stix/v2.1/vocab#",
+    "mitre": "https://attack.mitre.org/techniques/",
+    "cve": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=",
+    "oci": "https://opencontainers.org/schema#",
+    "k8s": "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#",
+
+    "Rule": "falco:Rule",
+    "Macro": "falco:Macro",
+    "List": "falco:List",
+    "Alert": "falco:Alert",
+    "DetectionEngine": "falco:DetectionEngine",
+
+    "rule": {
+      "@id": "falco:ruleName",
+      "@type": "xsd:string"
+    },
+    "condition": {
+      "@id": "falco:condition",
+      "@type": "xsd:string"
+    },
+    "output": {
+      "@id": "falco:output",
+      "@type": "xsd:string"
+    },
+    "priority": {
+      "@id": "falco:priority",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "falco:dataSource",
+      "@type": "xsd:string"
+    },
+    "enabled": {
+      "@id": "falco:enabled",
+      "@type": "xsd:boolean"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@set"
+    },
+
+    "hostname": {
+      "@id": "schema:hostName",
+      "@type": "xsd:string"
+    },
+    "time": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "uuid": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+
+    "processName": {
+      "@id": "falco:processName",
+      "@type": "xsd:string"
+    },
+    "processId": {
+      "@id": "falco:processId",
+      "@type": "xsd:integer"
+    },
+    "parentProcessName": {
+      "@id": "falco:parentProcessName",
+      "@type": "xsd:string"
+    },
+    "commandLine": {
+      "@id": "falco:commandLine",
+      "@type": "xsd:string"
+    },
+    "userName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "falco:userId",
+      "@type": "xsd:integer"
+    },
+
+    "containerId": {
+      "@id": "oci:containerId",
+      "@type": "xsd:string"
+    },
+    "containerName": {
+      "@id": "oci:containerName",
+      "@type": "xsd:string"
+    },
+    "containerImage": {
+      "@id": "oci:imageRepository",
+      "@type": "xsd:string"
+    },
+    "containerImageTag": {
+      "@id": "oci:imageTag",
+      "@type": "xsd:string"
+    },
+
+    "namespace": {
+      "@id": "k8s:namespace",
+      "@type": "xsd:string"
+    },
+    "podName": {
+      "@id": "k8s:podName",
+      "@type": "xsd:string"
+    },
+
+    "threatCategory": {
+      "@id": "stix:attack-pattern",
+      "@type": "@id"
+    },
+    "mitreAttackTechnique": {
+      "@id": "mitre:technique",
+      "@type": "@id"
+    },
+
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:softwareVersion",
+      "@type": "xsd:string"
+    },
+    "license": {
+      "@id": "spdx:licenseDeclared",
+      "@type": "xsd:string"
+    },
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://falco.org/schemas/output/v1/falco-alert-output.json",
+  "title": "Falco Alert Output",
+  "description": "Schema for the JSON alert output emitted by Falco when a rule is triggered. This is the format used by all Falco output channels including stdout, file, gRPC, and HTTP webhook outputs.",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the alert event"
+    },
+    "output": {
+      "type": "string",
+      "description": "Formatted output message as defined by the rule output template"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Severity level of the alert",
+      "enum": [
+        "Emergency",
+        "Alert",
+        "Critical",
+        "Error",
+        "Warning",
+        "Notice",
+        "Informational",
+        "Debug"
+      ]
+    },
+    "rule": {
+      "type": "string",
+      "description": "Name of the rule that triggered the alert"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source that generated the event",
+      "enum": [
+        "syscall",
+        "k8s_audit",
+        "aws_cloudtrail",
+        "okta",
+        "github"
+      ]
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the event occurred"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname of the machine where the event was detected"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags associated with the triggered rule including MITRE ATT&CK references"
+    },
+    "output_fields": {
+      "type": "object",
+      "description": "Key-value pairs of fields extracted from the event",
+      "properties": {
+        "evt.time": {
+          "type": "string",
+          "description": "Event timestamp"
+        },
+        "evt.type": {
+          "type": "string",
+          "description": "System call or event type"
+        },
+        "user.name": {
+          "type": "string",
+          "description": "User name associated with the event"
+        },
+        "user.uid": {
+          "type": ["integer", "string"],
+          "description": "User ID associated with the event"
+        },
+        "proc.name": {
+          "type": "string",
+          "description": "Process name"
+        },
+        "proc.pid": {
+          "type": "integer",
+          "description": "Process ID"
+        },
+        "proc.ppid": {
+          "type": "integer",
+          "description": "Parent process ID"
+        },
+        "proc.cmdline": {
+          "type": "string",
+          "description": "Full command line of the process"
+        },
+        "proc.pname": {
+          "type": "string",
+          "description": "Parent process name"
+        },
+        "container.id": {
+          "type": "string",
+          "description": "Container ID"
+        },
+        "container.name": {
+          "type": "string",
+          "description": "Container name"
+        },
+        "container.image.repository": {
+          "type": "string",
+          "description": "Container image repository"
+        },
+        "container.image.tag": {
+          "type": "string",
+          "description": "Container image tag"
+        },
+        "k8s.ns.name": {
+          "type": "string",
+          "description": "Kubernetes namespace name"
+        },
+        "k8s.pod.name": {
+          "type": "string",
+          "description": "Kubernetes pod name"
+        },
+        "fd.name": {
+          "type": "string",
+          "description": "File descriptor name (file path, connection tuple, etc.)"
+        }
+      },
+      "additionalProperties": {
+        "type": ["string", "integer", "boolean", "null"]
+      }
+    }
+  },
+  "required": ["output", "priority", "rule", "source", "time"],
+  "additionalProperties": true
+}
