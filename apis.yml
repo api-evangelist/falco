@@ -1,55 +1,53 @@
+aid: falco
 name: Falco
-description: Cloud-native runtime security tool that detects unexpected application
-  behavior and alerts on threats at runtime using eBPF
-url: https://falco.org
+description: >-
+  Falco is a cloud-native runtime security tool that detects unexpected
+  application behavior and alerts on threats at runtime using eBPF. It is a
+  CNCF graduated project that continuously monitors Linux kernel syscalls and
+  compares them against configurable security rules to detect intrusions,
+  privilege escalation, and other suspicious behaviors.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Security
-- Runtime Security
-- Cloud Native
-- eBPF
-- Threat Detection
-- CNCF
-created: '2025'
-modified: '2025'
-apis:
-- aid: falco:falco-http-api
-  name: Falco HTTP API
-  description: REST API served by the Falco web server providing health checks,
-    version information, and rules management endpoints for the Falco runtime
-    security engine.
-  tags:
   - Security
   - Runtime Security
-  - Health Check
-  - Rules
-  humanURL: https://falco.org/docs/
-  properties:
-  - url: openapi/falco-openapi.yml
-    type: OpenAPI
-  - url: json-schema/falco-rules.json
-    type: JSONSchema
-  - url: json-schema/falco-alert-output.json
-    type: JSONSchema
-  - url: json-ld/falco-context.jsonld
-    type: JSONLD
+  - Cloud Native
+  - eBPF
+  - Threat Detection
+url: https://falco.org
+created: '2025-01-01'
+modified: '2026-03-16'
+position: Consumer
+access: 3rd-Party
+specificationVersion: '0.19'
+apis:
+  - aid: falco:falco-http-api
+    name: Falco HTTP API
+    description: >-
+      REST API served by the Falco web server providing health checks, version
+      information, and rules management endpoints for the Falco runtime security
+      engine.
+    humanURL: https://falco.org/docs/
+    tags:
+      - Security
+      - Runtime Security
+      - Health Check
+    properties:
+      - type: Documentation
+        url: https://falco.org/docs/
+      - type: OpenAPI
+        url: openapi/falco-openapi.yml
 common:
-- name: Falco Documentation
-  description: Official documentation for Falco runtime security
-  url: https://falco.org/docs/
-  type: Documentation
-- name: Falco GitHub Repository
-  description: Source code repository for the Falco project
-  url: https://github.com/falcosecurity/falco
-  type: GitHubRepository
-- name: Falco Rules Repository
-  description: Default rules repository maintained by the Falco community
-  url: https://github.com/falcosecurity/rules
-  type: GitHubRepository
-- name: Falco Blog
-  description: Official blog with updates and security insights
-  url: https://falco.org/blog/
-  type: Blog
-- name: Falco Community
-  description: Community resources including Slack and mailing lists
-  url: https://falco.org/community/
-  type: Community
+  - type: Website
+    url: https://falco.org
+  - type: Documentation
+    url: https://falco.org/docs/
+  - type: Blog
+    url: https://falco.org/blog/
+  - type: Community
+    url: https://falco.org/community/
+  - type: GitHubOrganization
+    url: https://github.com/falcosecurity
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
