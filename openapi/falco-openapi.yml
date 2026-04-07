@@ -21,7 +21,7 @@ paths:
   /healthz:
     get:
       operationId: getHealthz
-      summary: Health check
+      summary: Falco Health check
       description: >-
         Returns the health status of the Falco engine. Returns 200 OK when
         Falco is running and healthy. Used by orchestrators such as Kubernetes
@@ -52,7 +52,7 @@ paths:
   /version:
     get:
       operationId: getVersion
-      summary: Version information
+      summary: Falco Version information
       description: >-
         Returns the version information for the running Falco instance,
         including the engine version and the version of the loaded rules files.
@@ -68,7 +68,7 @@ paths:
   /api/v1/rules:
     get:
       operationId: getRules
-      summary: List loaded rules
+      summary: Falco List loaded rules
       description: >-
         Returns the list of rules currently loaded in the Falco engine,
         including their names, descriptions, priorities, and enabled status.
@@ -89,7 +89,7 @@ paths:
   /api/v1/rules/reload:
     post:
       operationId: reloadRules
-      summary: Reload rules
+      summary: Falco Reload rules
       description: >-
         Triggers a reload of the Falco rules files. This allows rules to
         be updated without restarting the Falco daemon.
