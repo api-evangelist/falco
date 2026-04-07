@@ -206,7 +206,7 @@ components:
 tags:
   - name: Health
     description: Health check endpoints
-  - name: Version
-    description: Version information
   - name: Rules
     description: Rules management endpoints
+  - name: Version
+    description: Version information

@@ -9,10 +9,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Security
-  - Runtime Security
   - Cloud Native
   - eBPF
+  - Runtime Security
+  - Security
   - Threat Detection
 url: https://falco.org
 created: '2025-01-01'
@@ -29,9 +29,9 @@ apis:
       engine.
     humanURL: https://falco.org/docs/
     tags:
-      - Security
-      - Runtime Security
       - Health Check
+      - Runtime Security
+      - Security
     properties:
       - type: Documentation
         url: https://falco.org/docs/
@@ -55,9 +55,9 @@ apis:
       container activity, and custom event streams.
     humanURL: https://falco.org/docs/reference/plugins/plugin-api-reference/
     tags:
-      - Plugin
       - Developer Tools
       - Event Sources
+      - Plugin
     properties:
       - type: Documentation
         url: https://falco.org/docs/developer-guide/
@@ -74,9 +74,9 @@ apis:
       in Falco 0.43.0 and will be removed in a future release.
     humanURL: https://falco.org/docs/developer-guide/grpc/
     tags:
+      - Deprecated
       - gRPC
       - Security
-      - Deprecated
     properties:
       - type: Documentation
         url: https://falco.org/docs/developer-guide/grpc/
