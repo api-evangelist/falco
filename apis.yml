@@ -93,15 +93,15 @@ common:
     url: https://falco.org/blog/
   - type: Community
     url: https://falco.org/community/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://falco.org/docs/getting-started/
-  - type: Change Log
+  - type: ChangeLog
     url: https://falco.org/docs/reference/changelog/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/falcosecurity
   - type: GitHubRepository
     url: https://github.com/falcosecurity/falco
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/falco-context.jsonld
 maintainers:
   - FN: Kin Lane
