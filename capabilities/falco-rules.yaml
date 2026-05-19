@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Falco HTTP API — Rules
+  description: 'Falco HTTP API — Rules. 2 operations. Lead operation: Falco List loaded rules. Self-contained Naftiko capability
+    covering one Falco business surface.'
+  tags:
+  - Falco
+  - Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FALCO_API_KEY: FALCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: falco-rules
+    baseUri: http://localhost:8765
+    description: Falco HTTP API — Rules business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-rules
+      path: /api/v1/rules
+      operations:
+      - name: getrules
+        method: GET
+        description: Falco List loaded rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-rules-reload
+      path: /api/v1/rules/reload
+      operations:
+      - name: reloadrules
+        method: POST
+        description: Falco Reload rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: falco-rules-rest
+    port: 8080
+    description: REST adapter for Falco HTTP API — Rules. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v1/rules
+      name: api-v1-rules
+      description: REST surface for api-v1-rules.
+      operations:
+      - method: GET
+        name: getrules
+        description: Falco List loaded rules
+        call: falco-rules.getrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/rules/reload
+      name: api-v1-rules-reload
+      description: REST surface for api-v1-rules-reload.
+      operations:
+      - method: POST
+        name: reloadrules
+        description: Falco Reload rules
+        call: falco-rules.reloadrules
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: falco-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Falco HTTP API — Rules. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: falco-list-loaded-rules
+      description: Falco List loaded rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: falco-rules.getrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: falco-reload-rules
+      description: Falco Reload rules
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: falco-rules.reloadrules
+      outputParameters:
+      - type: object
+        mapping: $.
