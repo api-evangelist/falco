@@ -2,12 +2,20 @@
   "repo": "falco",
   "feeds": [
     {
-      "source": "https://falco.org/blog/",
+      "source": "https://falco.org/blog/feed.xml",
       "feed_url": "https://falco.org/blog/feed.xml",
-      "title": "Falco \u2013 The Falco blog",
-      "saved": 45
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://falco.org/docs/",
+      "feed_url": "https://falco.org/docs/feed.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "post_count": 55,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 56,
+  "fetched": "2026-06-01T23:35:02Z"
 }
