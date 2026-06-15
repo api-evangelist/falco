@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Falco HTTP API",
+    "version": "0.39.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/healthz"
+          },
+          "docs": "Returns the health status of the Falco engine. Returns 200 OK when Falco is running and healthy. Used by orchestrators such as Kubernetes for liveness and readiness probes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Version",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco Version information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/version"
+          },
+          "docs": "Returns the version information for the running Falco instance, including the engine version and the version of the loaded rules files."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco List loaded rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/api/v1/rules"
+          },
+          "docs": "Returns the list of rules currently loaded in the Falco engine, including their names, descriptions, priorities, and enabled status."
+        },
+        {
+          "info": {
+            "name": "Falco Reload rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8765/api/v1/rules/reload"
+          },
+          "docs": "Triggers a reload of the Falco rules files. This allows rules to be updated without restarting the Falco daemon."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

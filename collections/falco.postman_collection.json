@@ -1,0 +1,417 @@
+{
+  "item": [
+    {
+      "id": "1b3427f2-55cb-4442-9f97-6cf2afada361",
+      "name": "Health",
+      "description": {
+        "content": "Health check endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d93baff3-1762-4a03-bc79-4c54d8629815",
+          "name": "Falco Health check",
+          "request": {
+            "name": "Falco Health check",
+            "description": {
+              "content": "Returns the health status of the Falco engine. Returns 200 OK when Falco is running and healthy. Used by orchestrators such as Kubernetes for liveness and readiness probes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa0f8a67-4204-4f3d-b676-3e2c7a5395d6",
+              "name": "Falco is healthy and running",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8f33b2f-9dcc-4f86-a9d0-0486c2e395c4",
+              "name": "Falco is not healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"unhealthy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c7d52562-85d0-4a87-8007-fee71d76f6e0",
+      "name": "Rules",
+      "description": {
+        "content": "Rules management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1b84524-ffc1-4ae0-add0-5c78976166d2",
+          "name": "Falco List loaded rules",
+          "request": {
+            "name": "Falco List loaded rules",
+            "description": {
+              "content": "Returns the list of rules currently loaded in the Falco engine, including their names, descriptions, priorities, and enabled status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d23c845b-1ecf-46d0-9618-6691999dfa75",
+              "name": "List of loaded rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rules\": [\n    {\n      \"name\": \"Terminal shell in container\",\n      \"priority\": \"notice\",\n      \"enabled\": true,\n      \"source\": \"syscall\",\n      \"description\": \"A shell was used as the entrypoint/exec point into a container\",\n      \"tags\": [\n        \"container\",\n        \"shell\",\n        \"mitre_execution\"\n      ]\n    },\n    {\n      \"name\": \"Terminal shell in container\",\n      \"priority\": \"notice\",\n      \"enabled\": true,\n      \"source\": \"syscall\",\n      \"description\": \"A shell was used as the entrypoint/exec point into a container\",\n      \"tags\": [\n        \"container\",\n        \"shell\",\n        \"mitre_execution\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f263c8d-39fd-4464-a976-525593f36238",
+          "name": "Falco Reload rules",
+          "request": {
+            "name": "Falco Reload rules",
+            "description": {
+              "content": "Triggers a reload of the Falco rules files. This allows rules to be updated without restarting the Falco daemon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rules",
+                "reload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a7d60c4-5079-4c28-ade6-244935d5d381",
+              "name": "Rules reloaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rules",
+                    "reload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Rules reloaded successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "836112ae-96ed-4d66-8666-462f58608e53",
+              "name": "Error reloading rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rules",
+                    "reload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"An error occurred\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6d390120-c8f1-4e4f-b57b-759c7ac465d5",
+      "name": "Version",
+      "description": {
+        "content": "Version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05944d73-f27c-4e16-bfc8-55e27759e227",
+          "name": "Falco Version information",
+          "request": {
+            "name": "Falco Version information",
+            "description": {
+              "content": "Returns the version information for the running Falco instance, including the engine version and the version of the loaded rules files.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5a1b1a1-e2db-457d-900d-7a4c5ef095ed",
+              "name": "Version information returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"0.39.0\",\n  \"engine_version\": \"33\",\n  \"engine_fields_checksum\": \"abc123def456\",\n  \"rules_file_version\": \"falco_rules-3.3.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8765",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fe5fbdf1-cced-40a2-900d-6c7890862ca2",
+    "name": "Falco HTTP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.\n\nContact Support:\n Name: Falco Community",
+      "type": "text/plain"
+    }
+  }
+}
