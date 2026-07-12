@@ -79,6 +79,8 @@ apis:
       - type: GitHubRepository
         url: https://github.com/falcosecurity/falco
 common:
+  - type: DomainSecurity
+    url: security/falco-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/falco-security-oss
   - type: Website
