@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Falco HTTP Health Rules API
+  description: The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.
+  version: 0.39.0
+  contact:
+    name: Falco Community
+    url: https://falco.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8765
+  description: Default Falco web server
+tags:
+- name: Rules
+  description: Rules management endpoints
+paths:
+  /api/v1/rules:
+    get:
+      operationId: getRules
+      summary: Falco List loaded rules
+      description: Returns the list of rules currently loaded in the Falco engine, including their names, descriptions, priorities, and enabled status.
+      tags:
+      - Rules
+      responses:
+        '200':
+          description: List of loaded rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RuleSummary'
+  /api/v1/rules/reload:
+    post:
+      operationId: reloadRules
+      summary: Falco Reload rules
+      description: Triggers a reload of the Falco rules files. This allows rules to be updated without restarting the Falco daemon.
+      tags:
+      - Rules
+      responses:
+        '200':
+          description: Rules reloaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  message:
+                    type: string
+                    example: Rules reloaded successfully
+        '500':
+          description: Error reloading rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: An error occurred
+      required:
+      - status
+      - message
+    RuleSummary:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the rule
+          example: Terminal shell in container
+        description:
+          type: string
+          description: Description of what the rule detects
+          example: A shell was used as the entrypoint/exec point into a container
+        priority:
+          type: string
+          description: Severity level of the rule
+          enum:
+          - emergency
+          - alert
+          - critical
+          - error
+          - warning
+          - notice
+          - informational
+          - debug
+          example: notice
+        enabled:
+          type: boolean
+          description: Whether the rule is currently enabled
+          example: true
+        source:
+          type: string
+          description: Data source the rule applies to
+          enum:
+          - syscall
+          - k8s_audit
+          - aws_cloudtrail
+          - okta
+          - github
+          example: syscall
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the rule
+          example:
+          - container
+          - shell
+          - mitre_execution
+      required:
+      - name
+      - priority
+      - enabled
+      - source

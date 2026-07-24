@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Falco HTTP Health API
+  description: The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.
+  version: 0.39.0
+  contact:
+    name: Falco Community
+    url: https://falco.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8765
+  description: Default Falco web server
+tags:
+- name: Health
+  description: Health check endpoints
+paths:
+  /healthz:
+    get:
+      operationId: getHealthz
+      summary: Falco Health check
+      description: Returns the health status of the Falco engine. Returns 200 OK when Falco is running and healthy. Used by orchestrators such as Kubernetes for liveness and readiness probes.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Falco is healthy and running
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+        '503':
+          description: Falco is not healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: unhealthy

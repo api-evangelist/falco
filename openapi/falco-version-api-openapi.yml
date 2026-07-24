@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Falco HTTP Health Version API
+  description: The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.
+  version: 0.39.0
+  contact:
+    name: Falco Community
+    url: https://falco.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8765
+  description: Default Falco web server
+tags:
+- name: Version
+  description: Version information
+paths:
+  /version:
+    get:
+      operationId: getVersion
+      summary: Falco Version information
+      description: Returns the version information for the running Falco instance, including the engine version and the version of the loaded rules files.
+      tags:
+      - Version
+      responses:
+        '200':
+          description: Version information returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionInfo'
+components:
+  schemas:
+    VersionInfo:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Falco version string
+          example: 0.39.0
+        engine_version:
+          type: string
+          description: Falco engine version
+          example: '33'
+        engine_fields_checksum:
+          type: string
+          description: Checksum of the engine fields
+          example: abc123def456
+        rules_file_version:
+          type: string
+          description: Version of the loaded rules file
+          example: falco_rules-3.3.0
+      required:
+      - version
+      - engine_version
