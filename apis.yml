@@ -5,7 +5,19 @@ description: >-
   runtime using eBPF. It is a CNCF graduated project that continuously monitors Linux kernel syscalls and compares them
   against configurable security rules to detect intrusions, privilege escalation, and other suspicious behaviors.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/falco.png
 tags:
   - Cloud Native
   - eBPF
@@ -19,65 +31,100 @@ position: Consumer
 access: 3rd-Party
 specificationVersion: '0.19'
 apis:
-  - aid: falco:falco-http-api
-    name: Falco HTTP API
-    description: >-
-      REST API served by the Falco web server providing health checks, version information, and rules management
-      endpoints for the Falco runtime security engine.
-    humanURL: https://falco.org/docs/
-    tags:
-      - Health Check
-      - Runtime Security
-      - Security
-    properties:
-      - type: Documentation
-        url: https://falco.org/docs/
-      - type: Reference
-        url: https://falco.org/docs/reference/
-      - type: OpenAPI
-        url: openapi/falco-openapi.yml
-      - type: JSONSchema
-        url: json-schema/falco-alert-output.json
-      - type: JSONSchema
-        url: json-schema/falco-rules.json
-      - type: GitHubRepository
-        url: https://github.com/falcosecurity/falco
-  - aid: falco:falco-plugin-api
-    name: Falco Plugin API
-    description: >-
-      The Falco Plugin API provides a C ABI interface for developing plugins that extend Falco with new event sources
-      and field extractors. Plugins are shared libraries that implement the plugin API and can be loaded at runtime to
-      add support for new data sources such as cloud audit logs, container activity, and custom event streams.
-    humanURL: https://falco.org/docs/reference/plugins/plugin-api-reference/
-    tags:
-      - Developer Tools
-      - Event Sources
-      - Plugin
-    properties:
-      - type: Documentation
-        url: https://falco.org/docs/developer-guide/
-      - type: Reference
-        url: https://falco.org/docs/reference/plugins/plugin-api-reference/
-      - type: GitHubRepository
-        url: https://github.com/falcosecurity/plugin-sdk-go
-  - aid: falco:falco-grpc-api
-    name: Falco gRPC API
-    description: >-
-      The Falco gRPC API provided a streaming interface for consuming Falco alert outputs and querying version
-      information from a running Falco instance. The embedded gRPC server and gRPC Output have been deprecated in Falco
-      0.43.0 and will be removed in a future release.
-    humanURL: https://falco.org/docs/developer-guide/grpc/
-    tags:
-      - Deprecated
-      - gRPC
-      - Security
-    properties:
-      - type: Documentation
-        url: https://falco.org/docs/developer-guide/grpc/
-      - type: Deprecation Notice
-        url: https://falco.org/blog/falco-0-43-0/
-      - type: GitHubRepository
-        url: https://github.com/falcosecurity/falco
+- aid: falco:falco-plugin-api
+  name: Falco Plugin API
+  description: >-
+    The Falco Plugin API provides a C ABI interface for developing plugins that extend Falco with new
+    event sources and field extractors. Plugins are shared libraries that implement the plugin API and
+    can be loaded at runtime to add support for new data sources such as cloud audit logs, container activity,
+    and custom event streams.
+  humanURL: https://falco.org/docs/reference/plugins/plugin-api-reference/
+  tags:
+  - Developer Tools
+  - Event Sources
+  - Plugin
+  properties:
+  - type: Documentation
+    url: https://falco.org/docs/developer-guide/
+  - type: Reference
+    url: https://falco.org/docs/reference/plugins/plugin-api-reference/
+  - type: GitHubRepository
+    url: https://github.com/falcosecurity/plugin-sdk-go
+- aid: falco:falco-grpc-api
+  name: Falco gRPC API
+  description: >-
+    The Falco gRPC API provided a streaming interface for consuming Falco alert outputs and querying version
+    information from a running Falco instance. The embedded gRPC server and gRPC Output have been deprecated
+    in Falco 0.43.0 and will be removed in a future release.
+  humanURL: https://falco.org/docs/developer-guide/grpc/
+  tags:
+  - Deprecated
+  - gRPC
+  - Security
+  properties:
+  - type: Documentation
+    url: https://falco.org/docs/developer-guide/grpc/
+  - type: Deprecation Notice
+    url: https://falco.org/blog/falco-0-43-0/
+  - type: GitHubRepository
+    url: https://github.com/falcosecurity/falco
+- aid: falco:falco-health-api
+  name: Falco Health API
+  description: Health check endpoints
+  humanURL: https://falco.org/docs/
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/falco-health-api-openapi.yml
+  - type: Documentation
+    url: https://falco.org/docs/
+  - type: Reference
+    url: https://falco.org/docs/reference/
+  - type: JSONSchema
+    url: json-schema/falco-alert-output.json
+  - type: JSONSchema
+    url: json-schema/falco-rules.json
+  - type: GitHubRepository
+    url: https://github.com/falcosecurity/falco
+- aid: falco:falco-rules-api
+  name: Falco Rules API
+  description: Rules management endpoints
+  humanURL: https://falco.org/docs/
+  tags:
+  - Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/falco-rules-api-openapi.yml
+  - type: Documentation
+    url: https://falco.org/docs/
+  - type: Reference
+    url: https://falco.org/docs/reference/
+  - type: JSONSchema
+    url: json-schema/falco-alert-output.json
+  - type: JSONSchema
+    url: json-schema/falco-rules.json
+  - type: GitHubRepository
+    url: https://github.com/falcosecurity/falco
+- aid: falco:falco-version-api
+  name: Falco Version API
+  description: Version information
+  humanURL: https://falco.org/docs/
+  tags:
+  - Version
+  properties:
+  - type: OpenAPI
+    url: openapi/falco-version-api-openapi.yml
+  - type: Documentation
+    url: https://falco.org/docs/
+  - type: Reference
+    url: https://falco.org/docs/reference/
+  - type: JSONSchema
+    url: json-schema/falco-alert-output.json
+  - type: JSONSchema
+    url: json-schema/falco-rules.json
+  - type: GitHubRepository
+    url: https://github.com/falcosecurity/falco
 common:
   - type: AgenticAccess
     url: agentic-access/falco-agentic-access.yml
