@@ -1,0 +1,18 @@
+{
+  "provider": "falco",
+  "sources": [
+    "falco-health-api-openapi.yml",
+    "falco-rules-api-openapi.yml",
+    "falco-version-api-openapi.yml"
+  ],
+  "outputs": [
+    "falco-health-api-openapi.yml",
+    "falco-rules-api-openapi.yml",
+    "falco-version-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
