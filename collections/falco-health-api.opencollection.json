@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Falco HTTP Health API",
+    "version": "0.39.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/healthz"
+          },
+          "docs": "Returns the health status of the Falco engine. Returns 200 OK when Falco is running and healthy. Used by orchestrators such as Kubernetes for liveness and readiness probes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

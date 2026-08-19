@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Falco HTTP Health Rules API",
+    "version": "0.39.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco List loaded rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/api/v1/rules"
+          },
+          "docs": "Returns the list of rules currently loaded in the Falco engine, including their names, descriptions, priorities, and enabled status."
+        },
+        {
+          "info": {
+            "name": "Falco Reload rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8765/api/v1/rules/reload"
+          },
+          "docs": "Triggers a reload of the Falco rules files. This allows rules to be updated without restarting the Falco daemon."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

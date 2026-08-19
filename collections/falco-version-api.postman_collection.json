@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "69a4f1a1-3e57-47e3-9268-deabbae85e8e",
+      "name": "Version",
+      "description": {
+        "content": "Version information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52aa172d-79f4-4642-a1ff-2e8f5630c4b4",
+          "name": "Falco Version information",
+          "request": {
+            "name": "Falco Version information",
+            "description": {
+              "content": "Returns the version information for the running Falco instance, including the engine version and the version of the loaded rules files.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af9f19f3-244a-4951-9ee1-3cbadd96041a",
+              "name": "Version information returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"0.39.0\",\n  \"engine_version\": \"33\",\n  \"engine_fields_checksum\": \"abc123def456\",\n  \"rules_file_version\": \"falco_rules-3.3.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8765",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0881105d-00cc-4b51-8519-6f2dec8a9828",
+    "name": "Falco HTTP Health Version API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.\n\nContact Support:\n Name: Falco Community",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Falco HTTP Health Version API",
+    "version": "0.39.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Version",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Falco Version information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8765/version"
+          },
+          "docs": "Returns the version information for the running Falco instance, including the engine version and the version of the loaded rules files."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

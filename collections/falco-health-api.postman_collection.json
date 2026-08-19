@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "4b0b2148-cd8c-41f0-9e51-b7ec8a8b6acf",
+      "name": "Health",
+      "description": {
+        "content": "Health check endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8afe62f8-a324-4fdb-acf3-fd6423117613",
+          "name": "Falco Health check",
+          "request": {
+            "name": "Falco Health check",
+            "description": {
+              "content": "Returns the health status of the Falco engine. Returns 200 OK when Falco is running and healthy. Used by orchestrators such as Kubernetes for liveness and readiness probes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthz"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "055bf1d5-b845-495a-9006-a07c160d2a6e",
+              "name": "Falco is healthy and running",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f009f54-8424-467a-b4b0-cfb3b71e383c",
+              "name": "Falco is not healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthz"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"unhealthy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8765",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5b1c32f5-9ff6-4c3f-b95a-f26ad5fa0a38",
+    "name": "Falco HTTP Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.\n\nContact Support:\n Name: Falco Community",
+      "type": "text/plain"
+    }
+  }
+}
