@@ -19,6 +19,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/falco.png
 tags:
+  - Cloud-Native
+  - eBPF
+  - Runtime Security
+  - Security
+  - Threat Detection
+tags_raw:
   - Cloud Native
   - eBPF
   - Runtime Security
