@@ -61,6 +61,10 @@ apis:
   tags:
   - Developer Tools
   - Event Sources
+  - Plugins
+  tags_raw:
+  - Developer Tools
+  - Event Sources
   - Plugin
   properties:
   - type: Documentation
