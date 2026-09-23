@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Falco HTTP Health API
   description: The Falco HTTP API provides health check, version, and rules management endpoints for the Falco cloud-native runtime security engine. Falco uses eBPF to detect unexpected application behavior and alerts on threats at runtime. This API is served by the Falco web server when enabled via configuration.
