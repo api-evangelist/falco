@@ -64,6 +64,18 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: An error occurred
+      required:
+      - status
+      - message
     RuleSummary:
       type: object
       properties:
@@ -116,15 +128,3 @@ components:
       - priority
       - enabled
       - source
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-          example: An error occurred
-      required:
-      - status
-      - message
