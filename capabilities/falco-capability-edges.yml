@@ -1,0 +1,26 @@
+slug: falco
+provider: Falco
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Rules
+  spec_file: falco-rules-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.75
+  evidence: GET /api/v1/rules getRules Falco List loaded rules; POST /api/v1/rules/reload reloadRules;
+    'detects unexpected application behavior and alerts on threats at runtime'
+  reason: The operations manage the detection ruleset of a runtime security engine that monitors kernel
+    syscalls and alerts on intrusions and privilege escalation, which is threat detection and response
+    tooling. Some ambiguity as rule listing/reload is also configuration plumbing, hence moderate confidence.

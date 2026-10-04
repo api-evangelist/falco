@@ -149,6 +149,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/falcosecurity/falco
 common:
+  - type: CapabilityMap
+    url: capabilities/falco-capability-edges.yml
+    name: Falco Business Capability Map
   - type: IssueTracker
     url: https://github.com/falcosecurity/plugin-sdk-go/issues
   - type: Releases
