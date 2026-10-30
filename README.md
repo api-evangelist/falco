@@ -1,4 +1,4 @@
-# Falco (falco)
+# Falco
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,106 +66,142 @@
 
 Falco is a cloud-native runtime security tool that detects unexpected application behavior and alerts on threats at runtime using eBPF. It is a CNCF graduated project that continuously monitors Linux kernel syscalls and compares them against configurable security rules to detect intrusions, privilege escalation, and other suspicious behaviors.
 
-**APIs.json:** [https://falco.org](https://falco.org)
+**Areas:** Cloud-Native · eBPF · Runtime Security · Security · Threat Detection
 
-## Scope
+## Falco on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Falco is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/falco/](https://apis.io/providers/falco/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Cloud Native
-- eBPF
-- Runtime Security
-- Security
-- Threat Detection
+- [Falco Plugin API](https://apis.io/apis/falco/falco-plugin-api/) — The Falco Plugin API provides a C ABI interface for developing plugins that extend Falco with new event sources and field extractors. Plugins are shared…
+- [Falco gRPC API](https://apis.io/apis/falco/falco-grpc-api/) — The Falco gRPC API provided a streaming interface for consuming Falco alert outputs and querying version information from a running Falco instance. The…
+- [Falco Health API](https://apis.io/apis/falco/falco-health-api/) — Health check endpoints
+- [Falco Rules API](https://apis.io/apis/falco/falco-rules-api/) — Rules management endpoints
+- [Falco Version API](https://apis.io/apis/falco/falco-version-api/) — Version information
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Falco HTTP API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API served by the Falco web server providing health checks, version information, and rules management endpoints for the Falco runtime security engine.
+- [Falco Agentic Access](https://apis.io/agentic-access/falco/falco-agentic-access/)
 
-- **Human URL:** [https://falco.org/docs/](https://falco.org/docs/)
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Health Check
-- Runtime Security
-- Security
+- [Falco Alert Output](https://apis.io/schemas/falco/falco-alert-output/)
+- [Falco Rules File](https://apis.io/schemas/falco/falco-rules/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://falco.org/docs/)
-- [Reference](https://falco.org/docs/reference/)
-- [OpenAPI](openapi/falco-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/falco.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/falco.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/falco-alert-output.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/falco-rules.json) — [JSON Schema](https://json-schema.org/specification)
-- [GitHub Repository](https://github.com/falcosecurity/falco)
+Linked-data contexts for the provider's vocabulary.
 
-### Falco Plugin API
+- [Falco Context](https://apis.io/jsonld/falco/falco-context/)
 
-The Falco Plugin API provides a C ABI interface for developing plugins that extend Falco with new event sources and field extractors. Plugins are shared libraries that implement the plugin API and can be loaded at runtime to add support for new data sources such as cloud audit logs, container activity, and custom event streams.
+#### Collections (4)
 
-- **Human URL:** [https://falco.org/docs/reference/plugins/plugin-api-reference/](https://falco.org/docs/reference/plugins/plugin-api-reference/)
+Postman and Open Collection request collections.
 
-#### Tags
+- [Falco HTTP API](https://apis.io/collections/falco/open-falco/)
+- [Falco HTTP Health API](https://apis.io/collections/falco/open-falco-health-api/)
+- [Falco HTTP Health Rules API](https://apis.io/collections/falco/open-falco-rules-api/)
+- [Falco HTTP Health Version API](https://apis.io/collections/falco/open-falco-version-api/)
 
-- Developer Tools
-- Event Sources
-- Plugin
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://falco.org/docs/developer-guide/)
-- [Reference](https://falco.org/docs/reference/plugins/plugin-api-reference/)
-- [GitHub Repository](https://github.com/falcosecurity/plugin-sdk-go)
-- [Postman Collection](collections/falco.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/falco.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Falco — jsonschema rules](https://apis.io/rules/falco/falco-jsonschema-spectral-rules/)
 
-### Falco gRPC API
+#### Security (1)
 
-The Falco gRPC API provided a streaming interface for consuming Falco alert outputs and querying version information from a running Falco instance. The embedded gRPC server and gRPC Output have been deprecated in Falco 0.43.0 and will be removed in a future release.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://falco.org/docs/developer-guide/grpc/](https://falco.org/docs/developer-guide/grpc/)
+- [Falco Domain Security](https://apis.io/security/falco/falco-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Deprecated
-- gRPC
-- Security
+Published plans, tiers and prices.
 
-#### Properties
+- [Falco Plans Pricing](https://apis.io/plans/falco/falco-plans-pricing/)
 
-- [Documentation](https://falco.org/docs/developer-guide/grpc/)
-- [Deprecation  Notice](https://falco.org/blog/falco-0-43-0/)
-- [GitHub Repository](https://github.com/falcosecurity/falco)
-- [Postman Collection](collections/falco.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/falco.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [LinkedIn](https://www.linkedin.com/company/falco-security-oss)
+- [Falco Rate Limits](https://apis.io/rate-limits/falco/falco-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Falco Finops](https://apis.io/finops/falco/falco-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://falco.org)
 - [Documentation](https://falco.org/docs/)
-- [Blog](https://falco.org/blog/)
-- [Community](https://falco.org/community/)
-- [Getting Started](https://falco.org/docs/getting-started/)
+- [Getting started](https://falco.org/docs/getting-started/)
 - [Changelog](https://falco.org/docs/reference/changelog/)
-- [GitHub Organization](https://github.com/falcosecurity)
-- [GitHub Repository](https://github.com/falcosecurity/falco)
-- [JSON-LD](json-ld/falco-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Blog](https://falco.org/blog/)
+- [GitHub](https://github.com/falcosecurity)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 53.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/falco/](https://apis.io/providers/falco/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Falco: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/falco/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
